@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.log
+.env
+icons/source.png
+scripts/deploy.config.js
+build/provenance.json

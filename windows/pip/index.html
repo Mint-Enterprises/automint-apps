@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+    />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="pip-titlebar">
+      <div class="pip-drag">
+        <img src="../icons/32x32.png" alt="" class="pip-icon" />
+        <span class="pip-title">Automint</span>
+        <span class="pip-badge">MINI</span>
+      </div>
+      <div class="pip-controls">
+        <button id="btn-expand" class="pip-btn" title="Open main window">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="15 3 21 3 21 9" />
+            <polyline points="9 21 3 21 3 15" />
+            <line x1="21" y1="3" x2="14" y2="10" />
+            <line x1="3" y1="21" x2="10" y2="14" />
+          </svg>
+        </button>
+        <button id="btn-close" class="pip-btn close-btn" title="Close">
+          <svg width="12" height="12" viewBox="0 0 12 12">
+            <path
+              d="M2 2l8 8M10 2l-8 8"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

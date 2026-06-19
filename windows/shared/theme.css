@@ -1,0 +1,113 @@
+/* ============================================================
+   Automint Desktop — Shared Theme Tokens
+   Mirror of autommweb's premium matrix-cyberpunk design system.
+   Consumed by splash/, titlebar/, pip/ via <link> tag.
+   HTA installer maintains a parallel comment-block mirror
+   (see build/installer.hta top-of-<style>).
+   ============================================================ */
+
+/* ── Local font faces ─────────────────────────────────────── */
+
+@font-face {
+  font-family: "PlusJakartaSans";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/plus-jakarta-sans-variable.woff2") format("woff2-variations"),
+       url("fonts/plus-jakarta-sans-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("fonts/montserrat-variable.woff2") format("woff2-variations"),
+       url("fonts/montserrat-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrainsMono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+/* ── Tokens ───────────────────────────────────────────────── */
+
+:root {
+  /* Brand — matches autommweb exactly */
+  --am-primary:       #00FF41;
+  --am-primary-hover: #00CC33;
+  --am-primary-dark:  #00AA2A;
+  --am-primary-glow:  rgba(0, 255, 65, 0.4);
+  --am-primary-dim:   rgba(0, 255, 65, 0.15);
+
+  /* Surfaces */
+  --am-bg-deep:   #030303;
+  --am-bg-1:      #080808;
+  --am-bg-2:      #0F0F0F;
+  --am-bg-3:      #161616;
+  --am-bg-4:      #1F1F1F;
+
+  /* Text */
+  --am-text:      #FFFFFF;
+  --am-text-2:    #A0A0A0;
+  --am-text-3:    #555555;
+
+  /* Borders */
+  --am-border:       rgba(255, 255, 255, 0.05);
+  --am-border-hover: rgba(0, 255, 65, 0.2);
+
+  /* Multi-accent palette (mirrors web stats row) */
+  --am-accent-blue:   #3B82F6;
+  --am-accent-yellow: #FACC15;
+  --am-accent-pink:   #F472B6;
+  --am-accent-red:    #F87171;
+
+  /* Fonts — Plus Jakarta Sans for display, Montserrat for body */
+  --am-font-display: "PlusJakartaSans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --am-font-sans:    "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --am-font-mono:    "JetBrainsMono", "Consolas", "Courier New", monospace;
+}
+
+/* ── Shared keyframes ─────────────────────────────────────── */
+
+@keyframes am-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.5);
+    text-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+  }
+}
+
+/* ── Shared utility classes ───────────────────────────────── */
+
+.am-bg-noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.am-glass {
+  background: rgba(10, 10, 10, 0.92);
+  border: 1px solid var(--am-border);
+}
+
+.am-glass-bordered {
+  background: rgba(10, 10, 10, 0.92);
+  border: 1px solid transparent;
+  background-image:
+    linear-gradient(rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.92)),
+    linear-gradient(135deg, rgba(0, 255, 65, 0.35), rgba(0, 255, 65, 0.05));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}

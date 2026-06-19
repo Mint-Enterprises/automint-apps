@@ -1,0 +1,100 @@
+{
+  "name": "automint-desktop",
+  "version": "1.0.0",
+  "description": "Automint Desktop - Crypto escrow platform",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "dev": "electron . --dev",
+    "generate-icons": "node scripts/generate-icons.js",
+    "provenance": "node scripts/generate-provenance.js",
+    "build": "npm run provenance && electron-builder",
+    "build:win": "npm run provenance && electron-builder --win",
+    "build:mac": "npm run provenance && electron-builder --mac",
+    "build:linux": "npm run provenance && electron-builder --linux",
+    "deploy": "node scripts/deploy.js",
+    "integrity": "node scripts/generate-integrity.js",
+    "release": "npm run provenance && electron-builder --win --publish never && node scripts/generate-integrity.js && node scripts/deploy.js"
+  },
+  "author": "AutoMint (https://automint.org)",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "electron": "^41.2.0",
+    "electron-builder": "^26.0.12",
+    "png2icons": "^2.0.1",
+    "prettier": "^3.8.2",
+    "sharp": "^0.33.0"
+  },
+  "build": {
+    "appId": "org.automint.desktop",
+    "productName": "Automint",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload-titlebar.js",
+      "preload-content.js",
+      "preload-splash.js",
+      "preload-pip.js",
+      "titlebar/**/*",
+      "splash/**/*",
+      "pip/**/*",
+      "icons/**/*",
+      "shared/**/*",
+      "build/provenance.json",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "icons/icon.ico",
+      "icons/icon.png"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icons/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "icons/icon.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "icons/icon.png"
+    },
+    "compression": "maximum",
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "runAfterFinish": false,
+      "include": "build/installer.nsh"
+    },
+    "protocols": [
+      {
+        "name": "Automint",
+        "schemes": [
+          "automint"
+        ]
+      }
+    ],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://updates.example.com"
+      }
+    ]
+  },
+  "dependencies": {
+    "@sentry/electron": "^7.11.0",
+    "electron-store": "^10.1.0",
+    "electron-updater": "^6.8.3"
+  },
+  "private": true
+}

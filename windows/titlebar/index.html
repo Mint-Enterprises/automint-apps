@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+    />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="titlebar">
+      <div class="titlebar-drag">
+        <div class="titlebar-title">
+          <img src="../icons/32x32.png" alt="" class="titlebar-icon" />
+          <span>Automint</span>
+        </div>
+      </div>
+      <div class="titlebar-controls">
+        <div
+          id="connection-indicator"
+          class="connection-indicator"
+          title="Connection: checking..."
+        >
+          <svg width="14" height="14" viewBox="0 0 16 16">
+            <rect
+              class="bar bar-1"
+              x="1"
+              y="11"
+              width="3"
+              height="4"
+              rx="0.5"
+            />
+            <rect
+              class="bar bar-2"
+              x="5.5"
+              y="8"
+              width="3"
+              height="7"
+              rx="0.5"
+            />
+            <rect
+              class="bar bar-3"
+              x="10"
+              y="4"
+              width="3"
+              height="11"
+              rx="0.5"
+            />
+          </svg>
+        </div>
+        <button
+          id="btn-settings"
+          class="titlebar-btn settings-btn"
+          title="Settings"
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+            />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </button>
+        <button id="btn-minimize" class="titlebar-btn" title="Minimize">
+          <svg width="12" height="12" viewBox="0 0 12 12">
+            <rect x="2" y="5.5" width="8" height="1" fill="currentColor" />
+          </svg>
+        </button>
+        <button id="btn-maximize" class="titlebar-btn" title="Maximize">
+          <svg id="icon-maximize" width="12" height="12" viewBox="0 0 12 12">
+            <rect
+              x="2"
+              y="2"
+              width="8"
+              height="8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+            />
+          </svg>
+          <svg
+            id="icon-restore"
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            style="display: none"
+          >
+            <path
+              d="M3 4.5V2.5h6.5V9H7.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+            />
+            <rect
+              x="1.5"
+              y="4.5"
+              width="6"
+              height="6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+            />
+          </svg>
+        </button>
+        <button id="btn-close" class="titlebar-btn close-btn" title="Close">
+          <svg width="12" height="12" viewBox="0 0 12 12">
+            <path
+              d="M2 2l8 8M10 2l-8 8"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Offline Banner -->
+    <div id="offline-banner" class="offline-banner hidden">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="1" y1="1" x2="23" y2="23" />
+        <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55" />
+        <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39" />
+        <path d="M10.71 5.05A16 16 0 0 1 22.56 9" />
+        <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88" />
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+        <line x1="12" y1="20" x2="12.01" y2="20" />
+      </svg>
+      <span>No internet connection</span>
+    </div>
+
+    <!-- Settings Overlay -->
+    <div id="settings-backdrop" class="settings-backdrop hidden">
+      <div id="settings-panel" class="settings-panel">
+        <div class="settings-header">Settings</div>
+        <div class="settings-section">
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <span class="settings-label">Notifications</span>
+              <span class="settings-desc">Desktop push notifications</span>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-notifications" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <span class="settings-label">Spell check</span>
+              <span class="settings-desc">Check spelling in text fields</span>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-spellcheck" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <span class="settings-label">Minimize to tray</span>
+              <span class="settings-desc"
+                >Keep running when window is closed</span
+              >
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-tray" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <span class="settings-label">Start on boot</span>
+              <span class="settings-desc">Launch Automint when you log in</span>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-boot" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-info">
+              <span class="settings-label">Share usage data</span>
+              <span class="settings-desc"
+                >Share anonymous usage statistics to help improve Automint. No
+                personal data is collected.
+                <a href="#" id="link-privacy" class="settings-link"
+                  >Privacy</a
+                ></span
+              >
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-telemetry" checked />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="settings-divider"></div>
+        <div class="settings-section">
+          <button id="btn-reload" class="settings-action">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="1 4 1 10 7 10" />
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+            </svg>
+            Reload
+          </button>
+          <button id="btn-clear-session" class="settings-action danger">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6l-1 14H6L5 6" />
+              <path d="M10 11v6" />
+              <path d="M14 11v6" />
+              <path d="M9 6V4h6v2" />
+            </svg>
+            Clear Session
+          </button>
+        </div>
+        <div class="settings-divider"></div>
+        <div class="settings-provenance">
+          <div class="provenance-row">
+            <span class="provenance-label">Version</span>
+            <span class="provenance-value" id="prov-version">—</span>
+          </div>
+          <div class="provenance-row">
+            <span class="provenance-label">Commit</span>
+            <span class="provenance-value mono" id="prov-commit" title="">—</span>
+          </div>
+          <div class="provenance-row">
+            <span class="provenance-label">Built</span>
+            <span class="provenance-value" id="prov-built">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clear Session Confirmation Dialog -->
+    <div id="confirm-backdrop" class="confirm-backdrop hidden">
+      <div id="confirm-dialog" class="confirm-dialog">
+        <div class="confirm-title">Clear Session</div>
+        <div class="confirm-message">
+          Clear all session data? You will be logged out.
+        </div>
+        <div class="confirm-actions">
+          <button id="confirm-cancel" class="confirm-btn confirm-btn-cancel">
+            Cancel
+          </button>
+          <button id="confirm-clear" class="confirm-btn confirm-btn-danger">
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshot Flash -->
+    <div id="screenshot-flash" class="screenshot-flash hidden"></div>
+
+    <!-- Deep Link Overlay -->
+    <div id="deep-link-overlay" class="deep-link-overlay hidden">
+      <div class="deep-link-content">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+          />
+          <path
+            d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+          />
+        </svg>
+        <span class="deep-link-label">Incoming link</span>
+        <span class="deep-link-path"></span>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

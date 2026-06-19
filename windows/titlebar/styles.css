@@ -1,0 +1,672 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: transparent;
+}
+
+body {
+  font-family: var(--am-font-sans);
+  color: var(--am-text);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Titlebar ──────────────────────────────────────── */
+
+.titlebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 4px 0 12px;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom: 1px solid var(--am-border);
+}
+
+.titlebar-drag {
+  flex: 1;
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.titlebar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--am-text-2);
+  letter-spacing: -0.01em;
+}
+
+.titlebar-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.titlebar-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  -webkit-app-region: no-drag;
+}
+
+.titlebar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--am-text-2);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.titlebar-btn:hover {
+  background: var(--am-bg-3);
+  color: var(--am-text);
+}
+
+.titlebar-btn:active {
+  transform: scale(0.92);
+  transition-duration: 0.06s;
+}
+
+.close-btn:hover {
+  background: #e81123;
+  color: #ffffff;
+}
+
+/* ── Connection Indicator ─────────────────────────── */
+
+.connection-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 2px;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.connection-indicator .bar {
+  fill: #333;
+  transition: fill 0.4s ease;
+}
+
+/* Good (green) — all bars lit + breathing pulse */
+.connection-indicator.good .bar { fill: #22c55e; }
+
+.connection-indicator.good {
+  animation: connPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes connPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Medium (amber) — first two bars lit */
+.connection-indicator.medium .bar-1,
+.connection-indicator.medium .bar-2 { fill: #f59e0b; }
+.connection-indicator.medium .bar-3 { fill: #333; }
+
+/* Poor (red) — first bar lit */
+.connection-indicator.poor .bar-1 { fill: #ef4444; }
+.connection-indicator.poor .bar-2,
+.connection-indicator.poor .bar-3 { fill: #333; }
+
+/* Offline — all bars dim red */
+.connection-indicator.offline .bar { fill: #4a1c1c; }
+
+.settings-btn {
+  margin-right: 4px;
+}
+
+.settings-btn svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.settings-btn:hover svg {
+  transform: rotate(90deg);
+}
+
+.settings-btn.active {
+  background: #1a1a2e;
+  color: #818cf8;
+}
+
+.settings-btn.active svg {
+  transform: rotate(180deg);
+}
+
+/* ── Ambient Glow ─────────────────────────────────── */
+
+.titlebar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.titlebar.glow-positive::after {
+  background: linear-gradient(90deg, transparent, #22c55e, #4ade80, #22c55e, transparent);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.5), 0 0 24px rgba(34, 197, 94, 0.2);
+  opacity: 1;
+  animation: glowPulse 2s ease-in-out;
+}
+
+.titlebar.glow-alert::after {
+  background: linear-gradient(90deg, transparent, #f59e0b, #fbbf24, #f59e0b, transparent);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.5), 0 0 24px rgba(245, 158, 11, 0.2);
+  opacity: 1;
+  animation: glowPulse 2s ease-in-out;
+}
+
+.titlebar.glow-notification::after {
+  background: linear-gradient(90deg, transparent, #818cf8, #a78bfa, #818cf8, transparent);
+  box-shadow: 0 0 12px rgba(129, 140, 248, 0.5), 0 0 24px rgba(129, 140, 248, 0.2);
+  opacity: 1;
+  animation: glowPulse 2s ease-in-out;
+}
+
+.titlebar.glow-error::after {
+  background: linear-gradient(90deg, transparent, #ef4444, #f87171, #ef4444, transparent);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.5), 0 0 24px rgba(239, 68, 68, 0.2);
+  opacity: 1;
+  animation: glowPulse 2s ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Offline Banner ────────────────────────────────── */
+
+.offline-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 0;
+  background: #1a1207;
+  border-bottom: 1px solid #3d2e0a;
+  color: #f59e0b;
+  font-size: 12px;
+  font-weight: 500;
+  animation: bannerSlideDown 0.25s ease-out;
+}
+
+.offline-banner.hidden {
+  display: none;
+}
+
+.offline-banner.closing {
+  animation: bannerSlideUp 0.25s ease-in forwards;
+}
+
+@keyframes bannerSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bannerSlideUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100%); opacity: 0; }
+}
+
+/* ── Settings Overlay ──────────────────────────────── */
+
+.settings-backdrop {
+  position: fixed;
+  top: 36px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 8px 8px 0 0;
+  z-index: 100;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.settings-backdrop.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.settings-panel {
+  width: 280px;
+  background: #141414;
+  border: 1px solid #252525;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.settings-header {
+  padding: 16px 16px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f0f0f0;
+  letter-spacing: -0.01em;
+}
+
+.settings-section {
+  padding: 4px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settings-divider {
+  height: 1px;
+  background: #1e1e1e;
+  margin: 0 12px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.settings-row:hover {
+  background: #1a1a1a;
+}
+
+.settings-row.flash {
+  animation: rowFlash 0.5s ease-out;
+}
+
+@keyframes rowFlash {
+  0% { background: rgba(0, 255, 65, 0.15); }
+  100% { background: transparent; }
+}
+
+.settings-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.settings-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #d0d0d0;
+}
+
+.settings-desc {
+  font-size: 11px;
+  color: var(--am-text-2);
+}
+
+/* ── Toggle Switch ─────────────────────────────────── */
+
+.toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #333;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #666;
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.2s;
+}
+
+.toggle input:checked + .toggle-slider {
+  background: var(--am-primary);
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(16px);
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+/* ── Action Buttons ────────────────────────────────── */
+
+.settings-action {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: var(--am-text-2);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-action:hover {
+  background: #222;
+  color: var(--am-text);
+}
+
+.settings-action.danger:hover {
+  background: #2a1215;
+  color: #f87171;
+}
+
+/* ── Settings Close Animation ─────────────────────── */
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+}
+
+.settings-backdrop.closing {
+  animation: fadeOut 0.15s ease-in forwards;
+}
+
+.settings-backdrop.closing .settings-panel {
+  animation: slideUp 0.15s ease-in forwards;
+}
+
+/* ── Confirmation Dialog ──────────────────────────── */
+
+.confirm-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.confirm-backdrop.hidden {
+  display: none;
+}
+
+.confirm-backdrop.closing {
+  animation: fadeOut 0.15s ease-in forwards;
+}
+
+.confirm-dialog {
+  width: 300px;
+  background: #141414;
+  border: 1px solid #252525;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.confirm-backdrop.closing .confirm-dialog {
+  animation: slideUp 0.15s ease-in forwards;
+}
+
+.confirm-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f0f0f0;
+  margin-bottom: 8px;
+}
+
+.confirm-message {
+  font-size: 13px;
+  color: #909090;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.confirm-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.confirm-btn-cancel {
+  background: #1a1a1a;
+  color: var(--am-text-2);
+}
+
+.confirm-btn-cancel:hover {
+  background: #252525;
+  color: var(--am-text);
+}
+
+.confirm-btn-danger {
+  background: #e81123;
+  color: #ffffff;
+}
+
+.confirm-btn-danger:hover {
+  background: #f87171;
+  color: #ffffff;
+}
+
+/* ── Screenshot Flash ─────────────────────────────── */
+
+.screenshot-flash {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 255, 65, 0.15);
+  z-index: 300;
+  pointer-events: none;
+  animation: screenshotFlash 0.4s ease-out forwards;
+}
+
+.screenshot-flash.hidden {
+  display: none;
+}
+
+@keyframes screenshotFlash {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Deep Link Overlay ───────────────────────────── */
+
+.deep-link-overlay {
+  position: fixed;
+  top: 36px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 150;
+  pointer-events: none;
+  animation: deepLinkSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deep-link-overlay.hidden {
+  display: none;
+}
+
+.deep-link-overlay.closing {
+  animation: deepLinkSlideOut 0.3s ease-in forwards;
+}
+
+.deep-link-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  margin-top: 8px;
+  background: rgba(20, 20, 40, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(129, 140, 248, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  color: #818cf8;
+}
+
+.deep-link-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #a5b4fc;
+}
+
+.deep-link-path {
+  font-size: 12px;
+  font-weight: 600;
+  color: #c7d2fe;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+}
+
+@keyframes deepLinkSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes deepLinkSlideOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-8px); }
+}
+
+/* ── Build Provenance ─────────────────────────────────── */
+
+.settings-provenance {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.provenance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.provenance-label {
+  color: var(--am-text-3);
+  font-weight: 500;
+}
+
+.provenance-value {
+  color: var(--am-text-2);
+  font-weight: 400;
+}
+
+.provenance-value.mono {
+  font-family: var(--am-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.01em;
+  cursor: text;
+  user-select: text;
+}
+
+.provenance-value.dirty::after {
+  content: " (dirty)";
+  color: #f59e0b;
+}
+
+/* ── Window Focus Hairline ────────────────────────────── */
+/* A 1px matrix-green glow under the titlebar border when the
+   window is focused. Driven by body.window-focused (renderer.js). */
+
+body.window-focused .titlebar {
+  box-shadow: 0 1px 0 0 rgba(0, 255, 65, 0.12);
+}
+
+body.window-focused .titlebar-icon {
+  filter: drop-shadow(0 0 8px var(--am-primary-glow));
+  transition: filter 180ms ease;
+}
+
+.titlebar-icon {
+  transition: filter 180ms ease;
+}

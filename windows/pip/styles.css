@@ -1,0 +1,115 @@
+/* ============================================================
+   PiP mini-window chrome. 32px titlebar strip over a webview.
+   Webview content is the web app — retheming there is owned
+   by autommweb.
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  background: var(--am-bg-1);
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--am-font-sans);
+  color: var(--am-text);
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── PiP Titlebar ─────────────────────────────────────────── */
+
+.pip-titlebar {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 4px 0 10px;
+  background: var(--am-bg-2);
+  border-bottom: 1px solid var(--am-border);
+  flex-shrink: 0;
+  transition: box-shadow 180ms ease;
+}
+
+body.window-focused .pip-titlebar {
+  box-shadow: 0 1px 0 0 rgba(0, 255, 65, 0.12);
+}
+
+.pip-drag {
+  flex: 1;
+  -webkit-app-region: drag;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+}
+
+.pip-icon {
+  width: 14px;
+  height: 14px;
+  transition: filter 180ms ease;
+}
+
+body.window-focused .pip-icon {
+  filter: drop-shadow(0 0 6px var(--am-primary-glow));
+}
+
+.pip-title {
+  font-family: var(--am-font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--am-text-2);
+}
+
+.pip-badge {
+  font-family: var(--am-font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--am-primary);
+  background: var(--am-primary-dim);
+  border: 1px solid rgba(0, 255, 65, 0.25);
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.pip-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  -webkit-app-region: no-drag;
+}
+
+.pip-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--am-text-2);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.pip-btn:hover {
+  background: var(--am-bg-3);
+  color: var(--am-text);
+}
+
+.close-btn:hover {
+  background: #e81123;
+  color: #ffffff;
+}
+
+/* ── Webview ──────────────────────────────────────────────── */
+
+#pip-webview {
+  flex: 1;
+  border: none;
+}
