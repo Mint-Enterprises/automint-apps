@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="am_primary">#00FF41</color>
+    <color name="am_primary_hover">#00CC33</color>
+    <color name="am_primary_dark">#00AA2A</color>
+    <color name="am_primary_glow">#6600FF41</color>
+    <color name="am_primary_dim">#2600FF41</color>
+    <color name="am_on_primary">#030303</color>
+
+    <color name="am_bg_deep">#030303</color>
+    <color name="am_bg_1">#080808</color>
+    <color name="am_bg_2">#0F0F0F</color>
+    <color name="am_bg_3">#161616</color>
+    <color name="am_bg_4">#1F1F1F</color>
+
+    <color name="am_text">#FFFFFF</color>
+    <color name="am_text_2">#A0A0A0</color>
+    <color name="am_text_3">#555555</color>
+
+    <color name="am_border">#0DFFFFFF</color>
+    <color name="am_border_hover">#3300FF41</color>
+
+    <color name="am_accent_blue">#3B82F6</color>
+    <color name="am_accent_yellow">#FACC15</color>
+    <color name="am_accent_pink">#F472B6</color>
+    <color name="am_accent_red">#F87171</color>
+
+    <color name="brand_background">@color/am_bg_deep</color>
+    <color name="brand_primary">@color/am_primary</color>
+    <color name="brand_on_primary">@color/am_on_primary</color>
+    <color name="ic_launcher_background">@color/am_primary</color>
+</resources>

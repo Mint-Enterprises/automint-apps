@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Automint" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/am_primary</item>
+        <item name="colorOnPrimary">@color/am_on_primary</item>
+        <item name="colorPrimaryContainer">@color/am_primary_dim</item>
+        <item name="colorOnPrimaryContainer">@color/am_primary</item>
+
+        <item name="colorSurface">@color/am_bg_deep</item>
+        <item name="colorOnSurface">@color/am_text</item>
+        <item name="colorSurfaceVariant">@color/am_bg_2</item>
+        <item name="colorOnSurfaceVariant">@color/am_text_2</item>
+        <item name="colorOutline">@color/am_border</item>
+
+        <item name="android:colorBackground">@color/am_bg_deep</item>
+        <item name="android:windowBackground">@color/am_bg_deep</item>
+        <item name="android:statusBarColor">@color/am_bg_deep</item>
+        <item name="android:navigationBarColor">@color/am_bg_deep</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Automint.Headline</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Automint.Headline</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Automint.Title</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Automint.Body</item>
+
+        <item name="materialButtonStyle">@style/Widget.Automint.Button</item>
+    </style>
+
+    <style name="Theme.Automint.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/am_bg_deep</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen_icon</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/am_primary</item>
+        <item name="postSplashScreenTheme">@style/Theme.Automint</item>
+    </style>
+
+    <style name="Theme.Automint.Settings" parent="Theme.Material3.Dark">
+        <item name="colorPrimary">@color/am_primary</item>
+        <item name="colorOnPrimary">@color/am_on_primary</item>
+        <item name="colorSurface">@color/am_bg_deep</item>
+        <item name="colorOnSurface">@color/am_text</item>
+        <item name="colorSurfaceVariant">@color/am_bg_2</item>
+        <item name="android:colorBackground">@color/am_bg_deep</item>
+        <item name="android:statusBarColor">@color/am_bg_deep</item>
+        <item name="android:navigationBarColor">@color/am_bg_deep</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="TextAppearance.Automint.Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textColor">@color/am_text</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="TextAppearance.Automint.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textColor">@color/am_text</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="TextAppearance.Automint.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/am_text_2</item>
+    </style>
+
+    <style name="TextAppearance.Automint.Wordmark" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+        <item name="android:textColor">@color/am_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">-0.015</item>
+    </style>
+
+    <style name="Widget.Automint.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/am_primary</item>
+        <item name="android:textColor">@color/am_on_primary</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="rippleColor">@color/am_primary_glow</item>
+    </style>
+</resources>

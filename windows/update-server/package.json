@@ -1,0 +1,9 @@
+{
+  "name": "automint-update-server",
+  "version": "1.0.0",
+  "description": "Static file server for Automint desktop auto-updates",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

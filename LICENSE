@@ -1,0 +1,45 @@
+AutoMint Proprietary License
+
+Copyright (c) 2026 AutoMint (https://automint.org). All rights reserved.
+
+This repository and all of its contents — including all source code, assets,
+designs, and documentation across every platform directory (the "Software") —
+are the proprietary and confidential property of AutoMint. The Software is
+published publicly for transparency and demonstration purposes only.
+
+1. Grant of Rights
+   No rights are granted in the Software except the limited right to view the
+   source code as published on the hosting platform. All other rights are
+   reserved by AutoMint.
+
+2. Restrictions
+   You may NOT, without prior written permission from AutoMint:
+     (a) copy, download, or store the Software, except as strictly incidental
+         to viewing it through the hosting platform's interface;
+     (b) use the Software, in whole or in part, for any purpose, whether
+         commercial or non-commercial;
+     (c) modify, adapt, translate, or create derivative works of the Software;
+     (d) distribute, publish, sublicense, sell, rent, lease, or otherwise
+         transfer the Software or any portion of it;
+     (e) deploy, host, compile, or execute the Software or any product or
+         service derived from it;
+     (f) remove, obscure, or alter any copyright, trademark, or other
+         proprietary notice contained in the Software.
+
+3. Trademarks
+   "AutoMint", the AutoMint name, and the AutoMint logo are trademarks of
+   AutoMint. This license grants no right to use them.
+
+4. No Warranty
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+5. Limitation of Liability
+   IN NO EVENT SHALL AUTOMINT OR ITS OWNERS BE LIABLE FOR ANY CLAIM, DAMAGES,
+   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+   ARISING FROM OR IN CONNECTION WITH THE SOFTWARE OR THE VIEWING OR USE OF IT.
+
+6. Licensing Inquiries
+   For permission to use the Software beyond the limited rights granted above,
+   contact: contact@hilfing.dev

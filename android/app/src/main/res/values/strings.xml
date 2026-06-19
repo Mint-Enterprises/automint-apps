@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoMint</string>
+
+    <string name="notification_channel_default">General</string>
+    <string name="notif_channel_local">App notifications</string>
+    <string name="update_ready_message">An update has been downloaded.</string>
+    <string name="update_ready_action">Restart</string>
+    <string name="update_available_message">AutoMint %1$s is available. Update for the latest fixes.</string>
+    <string name="update_available_action">Update</string>
+    <string name="update_required_title">Update required</string>
+    <string name="update_required_message">This version of AutoMint is no longer supported. Please update to continue.</string>
+    <string name="update_required_action">Update now</string>
+    <string name="integrity_warning_title">Security warning</string>
+    <string name="integrity_warning_message">This copy of AutoMint may have been tampered with. Its signature doesn\'t match the official release. For your safety, download the official version from automint.online.</string>
+    <string name="integrity_warning_download">Download official version</string>
+    <string name="integrity_warning_continue">Continue anyway</string>
+    <string name="download_notif_complete">Download complete</string>
+    <string name="download_notif_failed">Download failed</string>
+
+    <string name="error_offline_title">Can\'t reach AutoMint</string>
+    <string name="error_offline_body">Check your connection and try again.</string>
+    <string name="error_retry">Retry</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_category_notifications">Notifications</string>
+    <string name="settings_category_privacy">Privacy &amp; security</string>
+    <string name="settings_category_input">Input</string>
+    <string name="settings_category_about">About</string>
+
+    <string name="settings_notifications_title">Push notifications</string>
+    <string name="settings_notifications_summary">Receive alerts about your account and activity.</string>
+
+    <string name="settings_biometric_title">App lock</string>
+    <string name="settings_biometric_summary">Require fingerprint, face, or device passcode to open the app.</string>
+    <string name="settings_biometric_timeout_title">Require unlock</string>
+    <string name="settings_biometric_unavailable">Your device doesn\'t have biometrics or a screen lock set up.</string>
+
+    <string name="settings_spellcheck_title">Spell check</string>
+    <string name="settings_spellcheck_summary">Underline misspellings while typing in the app.</string>
+
+    <string name="pref_telemetry_title">Share usage analytics</string>
+    <string name="pref_telemetry_summary">Send pseudonymous usage statistics to help improve the app. Does not include fraud-prevention signals.</string>
+
+    <string name="pref_fraud_title">Fraud-prevention signals</string>
+    <string name="pref_fraud_summary">Allow this device to share pseudonymous signals used to prevent fraud and abuse. You can turn this off.</string>
+
+    <string name="settings_version_title">Version</string>
+    <string name="settings_version_placeholder">1.0.4</string>
+
+    <string name="biometric_confirm_enable_title">Confirm it\'s you</string>
+    <string name="biometric_confirm_enable_subtitle">Authenticate to turn on App lock.</string>
+    <string name="biometric_unlock_title">Unlock AutoMint</string>
+    <string name="biometric_unlock_subtitle">Use your fingerprint, face, or device passcode.</string>
+    <string name="biometric_locked_title">AutoMint is locked</string>
+    <string name="biometric_locked_body">Authenticate to continue.</string>
+    <string name="biometric_unlock_button">Unlock</string>
+
+    <string name="consent_disclosure_title">Before you continue</string>
+    <string name="consent_disclosure_body">AutoMint collects device identifiers and device characteristics (such as your device model, operating system, and hardware details). These are used to prevent fraud and abuse, and to gather pseudonymous usage analytics that help us improve the app. You can change these choices any time in Settings. See our privacy policy for details: %1$s</string>
+    <string name="consent_continue">Continue</string>
+    <string name="privacy_policy_url" translatable="false">https://automint.online/privacy</string>
+
+    <string name="shortcut_new_deal">New Deal</string>
+    <string name="shortcut_my_deals">My Deals</string>
+    <string name="shortcut_chat">Chat</string>
+    <string name="shortcut_mintmp">MintMP</string>
+</resources>

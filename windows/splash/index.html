@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+    />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="splash-wrapper">
+      <div class="splash-aurora" aria-hidden="true"></div>
+
+      <div class="splash-content" id="splash-content">
+        <div class="splash-brand">
+          <div class="splash-orb">
+            <svg class="splash-ring" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="ring-track" cx="50" cy="50" r="46" />
+              <circle class="ring-fill"  cx="50" cy="50" r="46" />
+            </svg>
+            <span class="splash-orb-dot" aria-hidden="true"></span>
+            <img class="splash-logo" src="../icons/icon.png" alt="" />
+          </div>
+
+          <div class="splash-wordmark" aria-label="Automint">
+            <span class="letter" style="--i:0">A</span
+            ><span class="letter" style="--i:1">u</span
+            ><span class="letter" style="--i:2">t</span
+            ><span class="letter" style="--i:3">o</span
+            ><span class="letter" style="--i:4">m</span
+            ><span class="letter" style="--i:5">i</span
+            ><span class="letter" style="--i:6">n</span
+            ><span class="letter" style="--i:7">t</span>
+          </div>
+        </div>
+
+        <div
+          class="splash-status"
+          id="splash-status"
+          role="status"
+          aria-live="polite"
+        ></div>
+      </div>
+
+      <div class="error-container hidden" id="error-container">
+        <div class="error-icon">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+        </div>
+        <div class="error-title" id="error-title">Unable to connect</div>
+        <div class="error-subtitle">
+          Check your internet connection and try again
+        </div>
+        <button class="error-retry" id="error-retry">Retry</button>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

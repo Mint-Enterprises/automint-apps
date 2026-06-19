@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="splash-wrapper">
+      <div class="bg-grid"></div>
+      <div class="bg-glow"></div>
+      <div class="bg-noise"></div>
+
+      <div class="boot-container">
+        <div class="init-log" id="init-log"></div>
+
+        <div class="logo-stage hidden" id="logo-stage">
+          <div class="logo-ring" id="logo-ring">
+            <svg class="ring-svg" viewBox="0 0 200 200">
+              <circle class="ring-track" cx="100" cy="100" r="85" />
+              <circle class="ring-progress" cx="100" cy="100" r="85" />
+              <circle class="ring-glow" cx="100" cy="100" r="85" />
+            </svg>
+            <div class="logo-icon">
+              <img src="../icons/icon.png" alt="" id="logo-img" />
+            </div>
+          </div>
+          <div class="logo-text" id="logo-text">
+            <span class="logo-name">AUTOMINT</span>
+            <span class="logo-tagline" id="tagline"></span>
+          </div>
+          <div class="status-bar" id="status-bar">
+            <div class="status-fill" id="status-fill"></div>
+          </div>
+          <div class="status-label" id="status-label"></div>
+        </div>
+      </div>
+
+      <div class="error-container hidden" id="error-container">
+        <div class="error-icon">
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+        </div>
+        <div class="error-title" id="error-title">Unable to connect</div>
+        <div class="error-subtitle">
+          Check your internet connection and try again
+        </div>
+        <button class="error-retry" id="error-retry">RETRY</button>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
